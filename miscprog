@@ -41,6 +41,14 @@ void display(Node *h) {
     }
 }
 
+
+NOTE :: insert can also use forloop instead of while loop:
+p = first;
+for (i = 0; i < pos-1; i++) {
+    p = p->next;
+}
+// modify the links
+
 void insert(Node **head, int pos) {
     
     Node *newnode = (Node*)malloc(sizeof(Node*));
