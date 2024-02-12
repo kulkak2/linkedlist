@@ -34,7 +34,31 @@ void display(Node *h) {
     } else {
         ptr = h;
         while (ptr != NULL) {
-            printf(" %d ", ptr->data);
+            printf("%d ", ptr->data);
+            ptr = ptr->next;
+        }
+        printf("\n");
+    }
+}
+
+void insert(Node **head, int pos) {
+    
+    Node *newnode = (Node*)malloc(sizeof(Node*));
+    newnode->data = pos;
+    Node *ptr = NULL;
+    int cnt = 1;
+    
+    if (pos == 1) {
+        newnode->next = *head;
+        *head = newnode;
+    } else {
+        ptr = *head;
+        while (ptr != NULL) {
+            if (cnt == pos) {
+                newnode->next = ptr->next;
+                ptr->next = newnode;
+            }
+            cnt++;
             ptr = ptr->next;
         }
     }
@@ -46,6 +70,10 @@ int main() {
     addNode(6);
     addNode(7);
     addNode(8);
+    display(head);
+    insert(&head, 1);
+    insert(&head, 3);
+    insert(&head, 4);
     display(head);
 
     return 0;
